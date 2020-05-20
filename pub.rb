@@ -17,13 +17,19 @@ class Pub
         end
     end
 
+    def can_sell_drink(drink, customer)
+        return check_id(customer) &&
+                customer.wallet >= drink.price() &&
+                customer.drunkenness <= 20 &&
+                @drinks[drink] != nil &&
+                @drinks[drink] != 0
+    end
+
     def buy_drink(drink, customer)
-        if check_id(customer)
-            if customer.wallet >= drink.price() && customer.drunkenness <= 20
-                customer.wallet -= drink.price()
-                @till += drink.price()
-                customer.drunkenness += drink.alcohol_level()
-            end
+        if can_sell_drink(drink, customer)
+            customer.wallet -= drink.price()
+            @till += drink.price()
+            customer.drunkenness += drink.alcohol_level()
         end
     end
    

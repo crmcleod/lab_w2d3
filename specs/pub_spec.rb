@@ -12,6 +12,7 @@ class TestPub < Minitest::Test
     def setup
         @drink1 = Drink.new("Beer", 5.2, 5)
         @drink2 = Drink.new("Wine", 16.75, 12)
+        @drink3 = Drink.new("Whiskey", 22.75, 18)
         @food1 = Food.new("Burger", 11.10, 5)
         @food2 = Food.new("Pizza", 15.10, 15)
         @customer1 = Customer.new("Barney Gumble", 200, 45)
@@ -72,4 +73,12 @@ class TestPub < Minitest::Test
         @pub1.buy_food(@food1, @customer1)
         assert_equal(7, @customer1.drunkenness)
     end
+
+    def test_buy_drink__not_stocked
+        # check that we cannot buy a drink that is not stocked
+        # drink3 is not stocked
+        @pub1.buy_drink(@drink3, @customer1)
+        assert_equal(0, @customer1.drunkenness)
+    end
+
 end
