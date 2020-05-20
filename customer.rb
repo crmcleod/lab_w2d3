@@ -7,7 +7,9 @@ class Customer
     end
 
     def buy_drink(drink, pub)
-        @wallet -= drink.price()
-        pub.till += drink.price()
+        if @wallet >= drink.price()
+            @wallet -= drink.price()
+            pub.till += drink.price()
+        end
     end
 end
