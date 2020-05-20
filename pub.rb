@@ -7,4 +7,12 @@ class Pub
         @till = till
         @drinks = drinks
     end
+
+    def check_id(customer)
+        if customer.age >= 18
+            return true
+        else 
+            return false
+        end
+    end
 end
