@@ -10,6 +10,9 @@ require_relative("../pub")
 class TestCustomer < Minitest::Test
     def setup
         @customer1 = Customer.new("Barney Gumble", 200)
+        @drink1 = Drink.new("Beer", 5.2)
+        @drink2 = Drink.new("Wine", 16.75)
+        @pub1 = Pub.new("Sheeps Heid", 3000, [@drink1, @drink2])
     end
 
     def test_customer_constructor
@@ -17,5 +20,10 @@ class TestCustomer < Minitest::Test
         assert_equal(200, @customer1.wallet)
     end
 
-    def 
+    def test_buy_drink
+    # A Customer should be able to buy a Drink from the Pub, reducing the money in its wallet and increasing the money in the Pub's till
+        @customer1.buy_drink(@drink1, @pub1)
+        assert_equal(200 - 5.2, @customer1.wallet)
+        assert_equal(3000 + 5.2, @pub1.till)
+    end
 end
