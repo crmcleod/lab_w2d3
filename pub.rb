@@ -1,11 +1,20 @@
 class Pub
     attr_reader :name
-    attr_accessor :till, :drinks
+    attr_accessor :till, :drinks, :food
 
-    def initialize(name, till, drinks = [])
+    def initialize(name, till, drinks = [], food = [])
         @name = name
         @till = till
         @drinks = drinks
+        @food = food
+    end
+
+    def check_id(customer)
+        if customer.age >= 18
+            return true
+        else 
+            return false
+        end
     end
 
     def buy_drink(drink, customer)
@@ -17,12 +26,13 @@ class Pub
             end
         end
     end
-
-    def check_id(customer)
-        if customer.age >= 18
-            return true
-        else 
-            return false
+   
+    def buy_food(food, customer)
+        if customer.wallet >= food.price()
+            customer.wallet -= food.price()
+            @till += food.price()
+            customer.drunkenness -= food.rejuvenation_level()
         end
     end
+
 end

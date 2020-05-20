@@ -6,15 +6,18 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative("../customer")
 require_relative("../drinks")
 require_relative("../pub")
+require_relative("../food")
 
 class TestPub < Minitest::Test
     def setup
         @drink1 = Drink.new("Beer", 5.2, 5)
         @drink2 = Drink.new("Wine", 16.75, 12)
+        @food1 = Food.new("Burger", 11.10, 5)
+        @food2 = Food.new("Pizza", 15.10, 15)
         @customer1 = Customer.new("Barney Gumble", 200, 45)
         @customer2 = Customer.new("Homer Simpson", 1, 30)
         @customer3 = Customer.new("Maggie Simpson", 20000, 2)
-        @pub1 = Pub.new("Sheeps Heid", 3000, [@drink1, @drink2])
+        @pub1 = Pub.new("Sheeps Heid", 3000, [@drink1, @drink2], [@food1, @food2])
     end
 
     def test_pub_constructor
@@ -62,5 +65,11 @@ class TestPub < Minitest::Test
         wallet_before = @customer1.wallet
         @pub1.buy_drink(@drink2, @customer1)
         assert_equal(wallet_before, @customer1.wallet)
+    end
+
+    def test_buy_food
+        @pub1.buy_drink(@drink2, @customer1)
+        @pub1.buy_food(@food1, @customer1)
+        assert_equal(7, @customer1.drunkenness)
     end
 end
