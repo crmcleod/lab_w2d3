@@ -22,17 +22,17 @@ class TestCustomer < Minitest::Test
         assert_equal(200, @customer1.wallet)
     end
 
-    def test_buy_drink
-    # A Customer should be able to buy a Drink from the Pub, reducing the money in its wallet and increasing the money in the Pub's till
-        @customer1.buy_drink(@drink1, @pub1)
-        assert_equal(200 - 5.2, @customer1.wallet)
-        assert_equal(3000 + 5.2, @pub1.till)
-    end
+    # def test_buy_drink
+    # # A Customer should be able to buy a Drink from the Pub, reducing the money in its wallet and increasing the money in the Pub's till
+    #     @customer1.buy_drink(@drink1, @pub1)
+    #     assert_equal(200 - 5.2, @customer1.wallet)
+    #     assert_equal(3000 + 5.2, @pub1.till)
+    # end
 
-    def test_buy_drink__no_money
-        @customer2.buy_drink(@drink2, @pub1)
-        assert_equal(1, @customer2.wallet)
-        assert_equal(3000, @pub1.till)
-    end
+    # def test_buy_drink__no_money
+    #     @customer2.buy_drink(@drink2, @pub1)
+    #     assert_equal(1, @customer2.wallet)
+    #     assert_equal(3000, @pub1.till)
+    # end
 
 end
