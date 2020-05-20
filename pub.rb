@@ -13,6 +13,7 @@ class Pub
             if customer.wallet >= drink.price()
                 customer.wallet -= drink.price()
                 @till += drink.price()
+                customer.drunkenness += drink.alcohol_level()
             end
         end
     end

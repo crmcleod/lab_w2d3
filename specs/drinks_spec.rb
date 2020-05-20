@@ -9,12 +9,13 @@ require_relative("../pub")
 
 class TestDrinks < Minitest::Test
     def setup
-        @drink1 = Drink.new("Beer", 5.2)
-        @drink2 = Drink.new("Wine", 16.75)
+        @drink1 = Drink.new("Beer", 5.2, 5)
+        @drink2 = Drink.new("Wine", 16.75, 13)
     end
 
     def test_drink_constructor
         assert_equal("Beer", @drink1.name)
         assert_equal(5.2, @drink1.price)
+        assert_equal(13, @drink2.abv)
     end
 end
