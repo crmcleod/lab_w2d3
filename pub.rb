@@ -42,4 +42,11 @@ class Pub
         end
     end
 
+    def stock_value
+        total = 0
+        for drink, number in @drinks
+            total += drink.price * number
+        end
+        return total
+    end
 end

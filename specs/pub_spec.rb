@@ -94,4 +94,9 @@ class TestPub < Minitest::Test
         @pub1.buy_drink(@drink2, @customer1)
         assert_equal(0, @pub1.drinks[@drink2])
     end
+
+    def test_stock_value
+        result = @pub1.stock_value()
+        assert_equal(76.25, result)
+    end
 end
