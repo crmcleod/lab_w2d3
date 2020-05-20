@@ -99,4 +99,25 @@ class TestPub < Minitest::Test
         result = @pub1.stock_value()
         assert_equal(76.25, result)
     end
+
+    def test_stock_value__buy_all
+        @pub1.buy_drink(@drink1, @customer1)
+        @pub1.buy_drink(@drink1, @customer1)
+        @pub1.buy_drink(@drink1, @customer1)
+        @pub1.buy_drink(@drink1, @customer1)
+        @pub1.buy_drink(@drink1, @customer1)
+        @pub1.buy_food(@food2, @customer1)
+        @pub1.buy_food(@food2, @customer1)
+        @pub1.buy_drink(@drink2, @customer1)
+        @pub1.buy_food(@food2, @customer1)
+        @pub1.buy_food(@food2, @customer1)
+        @pub1.buy_drink(@drink2, @customer1)
+        @pub1.buy_drink(@drink2, @customer1)
+        @pub1.buy_drink(@drink2, @customer1)
+
+        result = @pub1.stock_value()
+        assert_equal(0, result)
+    end
+
+
 end

@@ -31,6 +31,8 @@ class Pub
             @till += drink.price()
             customer.drunkenness += drink.alcohol_level()
             @drinks[drink] -= 1
+        else
+            # puts "Can't serve you that #{drink.name}!"
         end
     end
    
