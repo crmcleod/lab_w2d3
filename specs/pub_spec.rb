@@ -54,4 +54,13 @@ class TestPub < Minitest::Test
         assert_equal(3000, @pub1.till)
         assert_equal(0, @customer3.drunkenness)
     end
+
+    def test_buy_drink__too_drunk
+        @pub1.buy_drink(@drink2, @customer1)
+        @pub1.buy_drink(@drink2, @customer1)
+        # check wallet value before and after to make sure he didnt get sold another drink
+        wallet_before = @customer1.wallet
+        @pub1.buy_drink(@drink2, @customer1)
+        assert_equal(wallet_before, @customer1.wallet)
+    end
 end

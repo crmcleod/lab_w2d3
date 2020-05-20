@@ -10,7 +10,7 @@ class Pub
 
     def buy_drink(drink, customer)
         if check_id(customer)
-            if customer.wallet >= drink.price()
+            if customer.wallet >= drink.price() && customer.drunkenness <= 20
                 customer.wallet -= drink.price()
                 @till += drink.price()
                 customer.drunkenness += drink.alcohol_level()
