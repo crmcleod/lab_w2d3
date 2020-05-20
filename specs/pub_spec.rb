@@ -81,4 +81,8 @@ class TestPub < Minitest::Test
         assert_equal(0, @customer1.drunkenness)
     end
 
+    def test_removes_drink_from_stock
+        @pub1.buy_drink(@drink2, @customer1)
+        assert_equal(2, @pub1.drinks[@drink2])
+    end
 end

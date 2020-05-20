@@ -30,6 +30,7 @@ class Pub
             customer.wallet -= drink.price()
             @till += drink.price()
             customer.drunkenness += drink.alcohol_level()
+            @drinks[drink] -= 1
         end
     end
    
