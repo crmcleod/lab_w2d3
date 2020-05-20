@@ -17,7 +17,7 @@ class TestPub < Minitest::Test
         @customer1 = Customer.new("Barney Gumble", 200, 45)
         @customer2 = Customer.new("Homer Simpson", 1, 30)
         @customer3 = Customer.new("Maggie Simpson", 20000, 2)
-        @pub1 = Pub.new("Sheeps Heid", 3000, [@drink1, @drink2], [@food1, @food2])
+        @pub1 = Pub.new("Sheeps Heid", 3000, {@drink1 => 5, @drink2 => 3}, {@food1 => 3, @food2 => 1})
     end
 
     def test_pub_constructor
