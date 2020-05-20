@@ -16,4 +16,6 @@ class TestCustomer < Minitest::Test
         assert_equal("Barney Gumble", @customer1.name)
         assert_equal(200, @customer1.wallet)
     end
+
+    def 
 end

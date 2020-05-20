@@ -5,4 +5,6 @@ class Customer
         @name = name
         @wallet = wallet
     end
+
+    
 end
